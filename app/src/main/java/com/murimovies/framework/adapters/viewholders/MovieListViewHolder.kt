@@ -17,11 +17,27 @@ import kotlinx.coroutines.launch
 
 class MovieListViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    /**
+     * Bind the data to the view
+     * @param item The movie to bind
+     * @param context The context of the view
+     * @return Unit
+     */
+
     fun bind(item: Movie, context: Context) {
         binding.title.text = item.title
         binding.overview.text = item.overview
         setImage(item, context, binding.IVPhoto, binding.root.context)
     }
+
+    /**
+     * Set the image of the movie
+     * @param movie The movie to bind
+     * @param context The context of the view
+     * @param imageView The image view to set the image
+     * @param appContext The context of the app
+     * @return Unit
+     */
 
     private fun setImage(movie: Movie, context: Context, imageView: ImageView, appContext: Context) {
         val urlImage = Constants.POSTER_URL + movie.poster_path

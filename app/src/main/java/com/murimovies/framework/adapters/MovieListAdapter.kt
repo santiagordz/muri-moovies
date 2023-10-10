@@ -11,12 +11,10 @@ import com.murimovies.framework.adapters.viewholders.MovieListViewHolder
 class MovieListAdapter: RecyclerView.Adapter<MovieListViewHolder>() {
     var data:ArrayList<Movie> = ArrayList()
     lateinit var context: Context
-
     fun MovieListAdapter(basicData : ArrayList<Movie>, context:Context){
         this.data = basicData
         this.context = context
     }
-
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         val item = data[position]
         if (item != null) {

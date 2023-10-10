@@ -10,7 +10,11 @@ object NetworkModuleDI {
 
     private val gsonFactory: GsonConverterFactory = GsonConverterFactory.create()
 
-    // Create an OkHttpClient with an interceptor to add the Bearer token
+    /**
+     * Create an OkHttpClient with an interceptor to add the API key to the request
+     * @return OkHttpClient: The client to make the API calls
+     * @see Constants.API_KEY
+     */
     private val okHttpClient: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
@@ -19,6 +23,11 @@ object NetworkModuleDI {
             chain.proceed(request)
         }
         .build()
+
+    /**
+     * Create a Retrofit instance with the base URL, the Gson converter and the OkHttpClient
+     * @return MovieAPIService: The service to make the API calls
+     */
 
     operator fun invoke(): MovieAPIService {
         return Retrofit.Builder()
