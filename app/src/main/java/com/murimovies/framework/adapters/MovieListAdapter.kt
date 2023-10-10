@@ -19,7 +19,9 @@ class MovieListAdapter: RecyclerView.Adapter<MovieListViewHolder>() {
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         val item = data[position]
-        holder.bind(item,context)
+        if (item != null) {
+            holder.bind(item,context)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
