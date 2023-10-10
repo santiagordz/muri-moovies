@@ -59,6 +59,8 @@
                     android:layout_height="wrap_content"
                     android:text="Overview"
                     android:paddingRight="30dp"
+                    android:maxLines="15"
+                    android:ellipsize="end"
                     android:textSize="16sp" />
             </LinearLayout>
 
