@@ -16,10 +16,15 @@ class MovieListViewModel : ViewModel() {
     val movieListLiveData = MutableLiveData<MovieResponse>()
     private val movieListRequirement = GetMovieList()
 
+    /**
+     * Función que obtiene la lista de películas
+     * @return Un objeto de tipo MovieResponse
+     */
+
     fun getMovieList() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val result: MovieResponse? = movieListRequirement(Constants.MAX_MOVIE_NUMBER)
+                val result: MovieResponse? = movieListRequirement(Constants.PAGE_NUMBER)
                 if (result != null) {
                     CoroutineScope(Dispatchers.Main).launch {
                         movieListLiveData.postValue(result!!)
